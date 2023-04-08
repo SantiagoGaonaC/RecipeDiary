@@ -14,5 +14,6 @@ app.use(require('./routes/users'));
 app.use(require('./routes/auth'));
 app.use(require('./routes/profile'));
 app.use(require('./routes/suggestions'));
+app.use(require('./routes/info'));
 
 module.exports = app;
