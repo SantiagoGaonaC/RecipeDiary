@@ -24,7 +24,7 @@ router.post('/api/login', async (req, res) => {
   const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
   // Enviar respuesta con token
-  res.json("Login exitoso token:",{ token });
+  res.json({ token });
 });
 
 module.exports = router;
