@@ -11,7 +11,7 @@ router.post('/api/login', async (req, res) => {
   // Verificar si el usuario existe
   const user = await User.findOne({ username });
   if (!user) {
-    return res.status(401).json({ error: 'El usuario o la contraseña son incorrectos' });
+    return res.status(404).json({ error: 'El usuario no existe' });
   }
 
   // Verificar si la contraseña es correcta
@@ -26,5 +26,6 @@ router.post('/api/login', async (req, res) => {
   // Enviar respuesta con token
   res.json({ token });
 });
+
 
 module.exports = router;
