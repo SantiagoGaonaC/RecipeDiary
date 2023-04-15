@@ -21,7 +21,7 @@ router.post('/api/login', async (req, res) => {
   }
 
   // Crear token de autenticación
-  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '2d' });
 
   // Enviar respuesta con token
   res.json({ token });
