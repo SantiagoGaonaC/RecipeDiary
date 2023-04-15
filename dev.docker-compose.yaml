@@ -1,0 +1,39 @@
+version: "3.3"
+
+networks:
+  recipe-diary:
+    external: false
+
+services:
+  mongo:
+    container_name: recipe-diary-mongo
+    image: mongo:latest
+    restart: unless-stopped
+    networks:
+      - recipe-diary
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: RecipeDiary
+    volumes:
+      - type: bind
+        source: ./mongo-initdb.d
+        target: /docker-entrypoint-initdb.d
+        read_only: true
+  api:
+    depends_on:
+      - mongo
+    container_name: recipe-diary-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./example/config.env
+        target: /api/.env
+        read_only: true
+    restart: unless-stopped
+    networks:
+      - recipe-diary
+    ports:
+      - "127.0.0.1:4000:4000"
