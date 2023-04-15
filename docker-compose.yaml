@@ -30,7 +30,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - type: bind
-        source: ./example/config.env
+        source: ./.env
         target: /api/.env
         read_only: true
     restart: unless-stopped
