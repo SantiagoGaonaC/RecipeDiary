@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/auth');
 const axios = require('axios');
 
 // Ruta para obtener recetas con ingredientes dados
-router.get('/api/suggestions', async (req, res) => {
+router.get('/api/suggestions', auth, async (req, res) => {
   const ingredients = req.query.ingredients;
   if (!ingredients) {
     return res.status(400).json({ error: 'Debe proporcionar ingredientes para obtener sugerencias de recetas' });

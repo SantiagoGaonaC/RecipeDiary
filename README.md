@@ -66,3 +66,9 @@ PORT=4000
 ```
 docker compose --env-file .env up -d
 ```
+
+6. Routes SV
+```
+sudo su
+root@recipediary:/opt/backend/Recipe%20Diary#
+```

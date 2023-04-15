@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/auth');
 const axios = require('axios');
 
-router.get('/api/info', async (req, res) => {
+router.get('/api/info',auth, async (req, res) => {
   const ids = req.query.ids;
   const apiUrl = `https://api.spoonacular.com/recipes/informationBulk?ids=${ids}&includeNutrition=false&apiKey=${process.env.SPOONACULAR_API_KEY}`;
 
