@@ -10,3 +10,4 @@ com.example.frontend.app-rs-8 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary
 com.example.frontend.app-mergeDebugResources-9 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
 com.example.frontend.app-mergeDebugResources-10 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
 com.example.frontend.app-merged_res-11 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\app\intermediates\merged_res\debug
+com.example.frontend.app-packaged_res-12 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\shared_preferences_android\intermediates\packaged_res\debug

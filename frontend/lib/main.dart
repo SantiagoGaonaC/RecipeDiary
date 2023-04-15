@@ -1,4 +1,7 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'shared_preferences.dart';
 
 void main() => runApp(MyApp());
 
@@ -54,24 +57,127 @@ class _MyHomePageState extends State<MyHomePage>
     super.dispose();
   }
 
-  void _login() {
+  void _login() async {
     if (_loginFormKey.currentState!.validate()) {
-      // Perform login actions
+      // Si ambos campos se han llenado, hacer el login
       print('Email: ${_emailLoginController.text}');
       print('Contraseña: ${_passwordLoginController.text}');
+
+      final email = _emailLoginController.text;
+      final password = _passwordLoginController.text;
+
+      final url = Uri.parse('http://10.0.2.2:4000/api/login');
+      final headers = {'Content-Type': 'application/json'};
+      final body = json.encode({
+        'username': email,
+        'password': password,
+      });
+
+      final response = await http.post(
+        url,
+        headers: headers,
+        body: body,
+      );
+
+      if (response.statusCode == 200) {
+        // Si el servidor retornó 200 OK
+        final jsonResponse = jsonDecode(response.body);
+        MySharedPreferences.saveToken(jsonResponse["token"]);
+        setState(() {
+          if (MySharedPreferences.getToken() != "") {
+            // Navigate to the homepage
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => WelcomeScreen(),
+              ),
+            );
+          }
+        });
+      } else {
+        // De lo contrario, throw exception
+        setState(() {
+          // Mostrar snackbar con mensaje de error
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Credenciales de inicio de sesión incorrectas'),
+            ),
+          );
+        });
+      }
     }
   }
 
-  void _signup() {
+  void _signup() async {
     if (_signupFormKey.currentState!.validate()) {
-      // Perform sign-up actions
+      // Realizar el registro
       print('Name: ${_nameSignupController.text}');
       print('Last Name: ${_lastNameSignupController.text}');
       print('Email: ${_emailSignupController.text}');
       print('Contraseña: ${_passwordSignupController.text}');
-    }
 
-    void _forgotPassword() {}
+      final name = _nameSignupController.text;
+      final lastName = _lastNameSignupController.text;
+      final email = _emailSignupController.text;
+      final password = _passwordSignupController.text;
+
+      final url = Uri.parse('http://10.0.2.2:4000/api/register');
+      final headers = {'Content-Type': 'application/json'};
+      final body = json.encode({
+        'username': email,
+        'password': password,
+        'name': name,
+        'lastName': lastName,
+      });
+
+      final response = await http.post(
+        url,
+        headers: headers,
+        body: body,
+      );
+
+      if (response.statusCode == 200) {
+        // Si el servidor retornó 200 OK
+        setState(() {
+          //Vaciar los campos de registro
+          _nameSignupController.text = "";
+          _lastNameSignupController.text = "";
+          _emailSignupController.text = "";
+          _passwordSignupController.text = "";
+          //Mostrar un mensaje de registro exitoso
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('La cuenta se ha creado exitosamente.'),
+              duration: Duration(seconds: 4),
+              action: SnackBarAction(
+                label: 'x',
+                onPressed: () {
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                },
+              ),
+            ),
+          );
+        });
+      } else {
+        // De lo contrario, throw exception
+        setState(() {
+          // Mostrar snackbar con mensaje de error
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                  'Hubo un error creando el usuario. Inténtelo nuevamente.'),
+              duration: Duration(seconds: 4),
+              action: SnackBarAction(
+                label: 'x',
+                onPressed: () {
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                },
+              ),
+            ),
+          );
+        });
+      }
+    }
   }
 
   @override
@@ -211,19 +317,8 @@ class _MyHomePageState extends State<MyHomePage>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    TextButton(
-                      onPressed: () => {},
-                      child: Text(
-                        'Restaurar contraseña',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black54,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
                     ElevatedButton(
-                      onPressed: () => {},
+                      onPressed: _login,
                       child: Text(
                         'Ingresar',
                         style: TextStyle(
@@ -382,7 +477,7 @@ class _MyHomePageState extends State<MyHomePage>
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 90),
                   child: ElevatedButton(
-                    onPressed: () => {},
+                    onPressed: _signup,
                     child: Text(
                       'Registrar',
                       style: TextStyle(
@@ -404,6 +499,66 @@ class _MyHomePageState extends State<MyHomePage>
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+//vista 2
+
+class WelcomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Bienvenido!'),
+      ),
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildBigButton(context, Icons.restaurant_menu, 'Order Food'),
+            SizedBox(width: 16),
+            _buildBigButton(context, Icons.people, 'Join a Group'),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.kitchen),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.people),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.person),
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBigButton(BuildContext context, IconData icon, String label) {
+    return ElevatedButton.icon(
+      onPressed: () {},
+      icon: Icon(icon),
+      label: Text(label),
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(32),
+        ),
       ),
     );
   }
