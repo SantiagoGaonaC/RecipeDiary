@@ -5,6 +5,16 @@ import 'shared_preferences.dart';
 
 void main() => runApp(MyApp());
 
+void _logout(BuildContext context) async {
+  await MySharedPreferences.clearToken();
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => MyHomePage(title: 'Recipe Diary'),
+    ),
+  );
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -66,7 +76,8 @@ class _MyHomePageState extends State<MyHomePage>
       final email = _emailLoginController.text;
       final password = _passwordLoginController.text;
 
-      final url = Uri.parse('http://10.0.2.2:4000/api/login');
+      final url =
+          Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/login');
       final headers = {'Content-Type': 'application/json'};
       final body = json.encode({
         'username': email,
@@ -86,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage>
         setState(() {
           if (MySharedPreferences.getToken() != "") {
             // Navigate to the homepage
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) => WelcomeScreen(),
@@ -121,7 +132,8 @@ class _MyHomePageState extends State<MyHomePage>
       final email = _emailSignupController.text;
       final password = _passwordSignupController.text;
 
-      final url = Uri.parse('http://10.0.2.2:4000/api/register');
+      final url =
+          Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/register');
       final headers = {'Content-Type': 'application/json'};
       final body = json.encode({
         'username': email,
@@ -136,8 +148,8 @@ class _MyHomePageState extends State<MyHomePage>
         body: body,
       );
 
-      if (response.statusCode == 200) {
-        // Si el servidor retornó 200 OK
+      if (response.statusCode == 201) {
+        // Si el servidor retornó 201 OK
         setState(() {
           //Vaciar los campos de registro
           _nameSignupController.text = "";
@@ -504,24 +516,68 @@ class _MyHomePageState extends State<MyHomePage>
   }
 }
 
-//vista 2
-
+//HOMEPAGE
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Bienvenido!'),
-      ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _buildBigButton(context, Icons.restaurant_menu, 'Order Food'),
-            SizedBox(width: 16),
-            _buildBigButton(context, Icons.people, 'Join a Group'),
-          ],
-        ),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            title: Text('Recipe Diary'),
+            expandedHeight: 50,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xff6A5BF2),
+                      Color(0xff5AAC69),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+              ),
+            ),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.exit_to_app),
+                padding: EdgeInsets.only(right: 15),
+                onPressed: () => _logout(context),
+              ),
+            ],
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(height: 200),
+          ),
+          SliverToBoxAdapter(
+            child: Center(
+              child: Text(
+                '¡Bienvenido!',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(height: 16),
+          ),
+          SliverToBoxAdapter(
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildBigButton(context, Icons.restaurant_menu, 'Comidas'),
+                  SizedBox(width: 16),
+                  _buildBigButton(context, Icons.people, 'Red social'),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomAppBar(
         child: Row(
@@ -559,6 +615,7 @@ class WelcomeScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(32),
         ),
+        backgroundColor: Color(0xff6A5BF2),
       ),
     );
   }
