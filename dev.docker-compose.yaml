@@ -16,6 +16,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
       MONGO_INITDB_DATABASE: RecipeDiary
     volumes:
+      - ./mongo-data:/data/db
       - type: bind
         source: ./mongo-initdb.d
         target: /docker-entrypoint-initdb.d
