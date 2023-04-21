@@ -106,4 +106,42 @@ router.get("/api/socmed/posts-following", auth, async (req, res) => {
   }
 });
 
+
+router.post("/api/socmed/unfollow", auth, async (req, res) => {
+  try {
+    const { username } = req.body;
+
+    // Validar formato de los datos
+    if (typeof username !== "string" || username.trim().length === 0) {
+      return res.status(400).json({
+        error: "El nombre de usuario debe ser una cadena de texto no vacía",
+      });
+    }
+
+    // Buscar el usuario a dejar de seguir
+    const userToUnfollow = await User.findOne({ username });
+    if (!userToUnfollow) {
+      return res.status(404).json({ error: "Usuario no encontrado" });
+    }
+
+    // Eliminar al usuario de la lista de seguidos
+    const currentUser = await User.findById(req.user.userId);
+    const followingIndex = currentUser.following.findIndex(
+      (user) => user.userId.toString() === userToUnfollow._id.toString()
+    );
+    if (followingIndex === -1) {
+      return res.status(400).json({ error: "No sigues a este usuario" });
+    }
+    currentUser.following.splice(followingIndex, 1);
+    await currentUser.save();
+
+    res.json({ message: `Dejaste de seguir a ${userToUnfollow.username}` });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: "Ha ocurrido un error al dejar de seguir al usuario" });
+  }
+});
+
 module.exports = router;
