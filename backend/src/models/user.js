@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
       userId: { type: mongoose.Types.ObjectId, ref: 'user' },
       username: { type: String, required: true }
     }
-  ]
+  ],
+  createdAt: { type: Date, default: Date.now }
 });
 
 const user = mongoose.model('user', userSchema);
