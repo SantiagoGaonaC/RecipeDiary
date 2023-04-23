@@ -16,6 +16,7 @@ app.use(require('./routes/profile'));
 app.use(require('./routes/suggestions'));
 app.use(require('./routes/info'));
 app.use(require('./routes/socmed'));
+app.use(require('./routes/searchuser'));
 
 
 module.exports = app;
