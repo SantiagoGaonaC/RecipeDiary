@@ -6,13 +6,33 @@ import 'shared_preferences.dart';
 void main() => runApp(MyApp());
 
 void _logout(BuildContext context) async {
-  await MySharedPreferences.clearToken();
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(
-      builder: (context) => MyHomePage(title: 'Recipe Diary'),
-    ),
+  String? token = await MySharedPreferences.getToken();
+  print(token);
+  final url = Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/logout');
+  final headers = {'Authorization': 'Bearer ${token}'};
+  print(headers);
+
+  final response = await http.post(
+    url,
+    headers: headers,
   );
+
+  if (response.statusCode == 200) {
+    // Si el servidor retornó 200 OK
+    // Navigate to the login page
+    print('Successfully logged out');
+    await MySharedPreferences.clearToken();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MyHomePage(title: 'Recipe Diary'),
+      ),
+    );
+  } else {
+    // De lo contrario, throw exception
+    // Mostrar snackbar con mensaje de error
+    print("Error en cerrar la sesión");
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -48,9 +68,9 @@ class _MyHomePageState extends State<MyHomePage>
 
   bool _passwordVisible = false;
 
-  TextEditingController _emailLoginController = TextEditingController();
+  TextEditingController _usernameLoginController = TextEditingController();
   TextEditingController _passwordLoginController = TextEditingController();
-  TextEditingController _emailSignupController = TextEditingController();
+  TextEditingController _usernameSignupController = TextEditingController();
   TextEditingController _passwordSignupController = TextEditingController();
   TextEditingController _nameSignupController = TextEditingController();
   TextEditingController _lastNameSignupController = TextEditingController();
@@ -70,17 +90,17 @@ class _MyHomePageState extends State<MyHomePage>
   void _login() async {
     if (_loginFormKey.currentState!.validate()) {
       // Si ambos campos se han llenado, hacer el login
-      print('Email: ${_emailLoginController.text}');
+      print('Username: ${_usernameLoginController.text}');
       print('Contraseña: ${_passwordLoginController.text}');
 
-      final email = _emailLoginController.text;
+      final username = _usernameLoginController.text;
       final password = _passwordLoginController.text;
 
       final url =
           Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/login');
       final headers = {'Content-Type': 'application/json'};
       final body = json.encode({
-        'username': email,
+        'username': username,
         'password': password,
       });
 
@@ -94,6 +114,8 @@ class _MyHomePageState extends State<MyHomePage>
         // Si el servidor retornó 200 OK
         final jsonResponse = jsonDecode(response.body);
         MySharedPreferences.saveToken(jsonResponse["token"]);
+        String? tk = await MySharedPreferences.getToken();
+        print('token ${tk}');
         setState(() {
           if (MySharedPreferences.getToken() != "") {
             // Navigate to the homepage
@@ -124,19 +146,19 @@ class _MyHomePageState extends State<MyHomePage>
       // Realizar el registro
       print('Name: ${_nameSignupController.text}');
       print('Last Name: ${_lastNameSignupController.text}');
-      print('Email: ${_emailSignupController.text}');
+      print('Username: ${_usernameSignupController.text}');
       print('Contraseña: ${_passwordSignupController.text}');
 
       final name = _nameSignupController.text;
       final lastName = _lastNameSignupController.text;
-      final email = _emailSignupController.text;
+      final username = _usernameSignupController.text;
       final password = _passwordSignupController.text;
 
       final url =
           Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/register');
       final headers = {'Content-Type': 'application/json'};
       final body = json.encode({
-        'username': email,
+        'username': username,
         'password': password,
         'name': name,
         'lastName': lastName,
@@ -154,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage>
           //Vaciar los campos de registro
           _nameSignupController.text = "";
           _lastNameSignupController.text = "";
-          _emailSignupController.text = "";
+          _usernameSignupController.text = "";
           _passwordSignupController.text = "";
           //Mostrar un mensaje de registro exitoso
           ScaffoldMessenger.of(context).showSnackBar(
@@ -253,10 +275,10 @@ class _MyHomePageState extends State<MyHomePage>
               padding: EdgeInsets.symmetric(vertical: 80.0, horizontal: 40.0),
               children: [
                 TextFormField(
-                  controller: _emailLoginController,
+                  controller: _usernameLoginController,
                   decoration: InputDecoration(
-                    labelText: 'Email',
-                    hintText: 'Ingrese su correo...',
+                    labelText: 'Username',
+                    hintText: 'Ingrese su usuario...',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey,
@@ -272,13 +294,9 @@ class _MyHomePageState extends State<MyHomePage>
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Por favor digite su email';
-                    }
-                    if (!value.contains('@')) {
-                      return 'Por favor digite un email válido';
+                      return 'Por favor digite su usuario';
                     }
                     return null;
                   },
@@ -413,10 +431,11 @@ class _MyHomePageState extends State<MyHomePage>
                 ),
                 SizedBox(height: 16.0),
                 TextFormField(
-                  controller: _emailSignupController,
+                  controller: _usernameSignupController,
                   decoration: InputDecoration(
-                    labelText: 'Email',
-                    hintText: 'Ingrese su correo...',
+                    labelText: 'Usuario',
+                    hintText: 'Ingrese su usuario...',
+                    counterText: "",
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey,
@@ -432,13 +451,10 @@ class _MyHomePageState extends State<MyHomePage>
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  keyboardType: TextInputType.emailAddress,
+                  maxLength: 15,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Por favor digite su email';
-                    }
-                    if (!value.contains('@')) {
-                      return 'Por favor digite un email válido';
+                      return 'Por favor digite su usuario';
                     }
                     return null;
                   },
