@@ -9,7 +9,8 @@ void main() => runApp(MyApp());
 void _logout(BuildContext context) async {
   String? token = await MySharedPreferences.getToken();
   print(token);
-  final url = Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/logout');
+  final url =
+      Uri.parse('http://recipediary.bucaramanga.upb.edu.co:4000/api/logout');
   final headers = {'Authorization': 'Bearer ${token}'};
   print(headers);
 
@@ -22,25 +23,18 @@ void _logout(BuildContext context) async {
     // Si el servidor retornó 200 OK
     // Navigate to the login page
     print('Successfully logged out');
-    await MySharedPreferences.clearToken();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MyHomePage(title: 'Recipe Diary'),
-      ),
-    );
   } else {
     // De lo contrario, throw exception
     // Mostrar snackbar con mensaje de error
     print("Error en cerrar la sesión");
-    await MySharedPreferences.clearToken();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MyHomePage(title: 'Recipe Diary'),
-      ),
-    );
   }
+  await MySharedPreferences.clearToken();
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => MyHomePage(title: 'Recipe Diary'),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -85,7 +79,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
     String userValue = _searchController.text;
     if (token != null) {
       final url = Uri.parse(
-          'http://recipediary.bucaramanga.upb.edu.co/api/users/search?searchTerm=${userValue}');
+          'http://recipediary.bucaramanga.upb.edu.co:4000/api/users/search?searchTerm=${userValue}');
       final headers = {'Authorization': 'Bearer ${token}'};
 
       final response = await http.get(
@@ -225,18 +219,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                       padding: const EdgeInsets.only(right: 15.0),
                       child: SizedBox(
                         width: 90,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Color(0xff5AAC69),
-                            textStyle: TextStyle(fontSize: 16),
-                          ),
-                          onPressed: () {
-                            // Handle follow button click here
-                            print(
-                                'Follow button clicked for ${usernames[index]}');
-                          },
-                          child: Text('Seguir'),
-                        ),
+                        child: FollowButton(username: usernames[index]),
                       ),
                     ),
                   ],
@@ -247,6 +230,71 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         ],
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
+    );
+  }
+}
+
+class FollowButton extends StatefulWidget {
+  final String username;
+
+  FollowButton({required this.username});
+
+  @override
+  _FollowButtonState createState() => _FollowButtonState();
+}
+
+class _FollowButtonState extends State<FollowButton> {
+  bool _isFollowing = false;
+
+  void _followUser() async {
+    String? token = await MySharedPreferences.getToken();
+
+    if (token != null) {
+      final url = Uri.parse(
+          'http://recipediary.bucaramanga.upb.edu.co:4000/api/socmed/follow');
+
+      // Check if username is not null or empty
+      String userToFollow = widget.username;
+      if (userToFollow == null || userToFollow.trim().isEmpty) {
+        print("Invalid username");
+        return;
+      }
+
+      print("Trying to follow ${userToFollow}...");
+      print(userToFollow.runtimeType);
+      final headers = {'Authorization': 'Bearer ${token}'};
+      final body = json.encode({
+        "username": userToFollow,
+      });
+
+      final response = await http.post(
+        url,
+        headers: headers,
+        body: body,
+      );
+
+      if (response.statusCode == 200) {
+        setState(() {
+          _isFollowing = true;
+        });
+        print("Se siguio al usuario exitosamente");
+      } else {
+        print("Error siguiendo al usuario");
+        print(response.statusCode.toString());
+        print(response.body.toString());
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: _isFollowing ? Color(0xff5AAC69) : Color(0xff6A5BF2),
+        textStyle: TextStyle(fontSize: 16),
+      ),
+      onPressed: _isFollowing ? null : _followUser,
+      child: Text(_isFollowing ? 'Siguiendo' : 'Seguir'),
     );
   }
 }

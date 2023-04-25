@@ -9,7 +9,8 @@ void main() => runApp(MyApp());
 void _logout(BuildContext context) async {
   String? token = await MySharedPreferences.getToken();
   print(token);
-  final url = Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/logout');
+  final url =
+      Uri.parse('http://recipediary.bucaramanga.upb.edu.co:4000/api/logout');
   final headers = {'Authorization': 'Bearer ${token}'};
   print(headers);
 
@@ -22,25 +23,18 @@ void _logout(BuildContext context) async {
     // Si el servidor retornó 200 OK
     // Navigate to the login page
     print('Successfully logged out');
-    await MySharedPreferences.clearToken();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MyHomePage(title: 'Recipe Diary'),
-      ),
-    );
   } else {
     // De lo contrario, throw exception
     // Mostrar snackbar con mensaje de error
     print("Error en cerrar la sesión");
-    await MySharedPreferences.clearToken();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MyHomePage(title: 'Recipe Diary'),
-      ),
-    );
   }
+  await MySharedPreferences.clearToken();
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => MyHomePage(title: 'Recipe Diary'),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -105,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage>
       final password = _passwordLoginController.text;
 
       final url =
-          Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/login');
+          Uri.parse('http://recipediary.bucaramanga.upb.edu.co:4000/api/login');
       final headers = {'Content-Type': 'application/json'};
       final body = json.encode({
         'username': username,
@@ -162,8 +156,8 @@ class _MyHomePageState extends State<MyHomePage>
       final username = _usernameSignupController.text;
       final password = _passwordSignupController.text;
 
-      final url =
-          Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/register');
+      final url = Uri.parse(
+          'http://recipediary.bucaramanga.upb.edu.co:4000/api/register');
       final headers = {'Content-Type': 'application/json'};
       final body = json.encode({
         'username': username,
