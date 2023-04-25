@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'shared_preferences.dart';
+import 'search.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,6 +33,13 @@ void _logout(BuildContext context) async {
     // De lo contrario, throw exception
     // Mostrar snackbar con mensaje de error
     print("Error en cerrar la sesión");
+    await MySharedPreferences.clearToken();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MyHomePage(title: 'Recipe Diary'),
+      ),
+    );
   }
 }
 
@@ -113,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage>
       if (response.statusCode == 200) {
         // Si el servidor retornó 200 OK
         final jsonResponse = jsonDecode(response.body);
-        MySharedPreferences.saveToken(jsonResponse["token"]);
+        await MySharedPreferences.saveToken(jsonResponse["token"]);
         String? tk = await MySharedPreferences.getToken();
         print('token ${tk}');
         setState(() {
@@ -519,7 +527,7 @@ class _MyHomePageState extends State<MyHomePage>
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(60.0),
                       ),
-                      minimumSize: Size(double.infinity, 50),
+                      minimumSize: Size(double.infinity, 45),
                     ),
                   ),
                 ),
@@ -586,44 +594,35 @@ class WelcomeScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _buildBigButton(context, Icons.restaurant_menu, 'Comidas'),
+                  _buildBigButton(context, Icons.restaurant_menu, 'Comidas', 0),
                   SizedBox(width: 16),
-                  _buildBigButton(context, Icons.people, 'Red social'),
+                  _buildBigButton(context, Icons.people, 'Red social', 1),
                 ],
               ),
             ),
           ),
         ],
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: Icon(Icons.home),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.kitchen),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.people),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.person),
-              onPressed: () {},
-            ),
-          ],
-        ),
-      ),
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 
-  Widget _buildBigButton(BuildContext context, IconData icon, String label) {
+  Widget _buildBigButton(
+      BuildContext context, IconData icon, String label, int option) {
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: () {
+        if (option == 0) {
+          //Pressed Comidas button
+        } else if (option == 1) {
+          //Pressed Social Media button
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SearchBarWidget(),
+            ),
+          );
+        }
+      },
       icon: Icon(icon),
       label: Text(label),
       style: ElevatedButton.styleFrom(
@@ -632,6 +631,35 @@ class WelcomeScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(32),
         ),
         backgroundColor: Color(0xff6A5BF2),
+      ),
+    );
+  }
+}
+
+class CustomBottomNavigationBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BottomAppBar(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.kitchen),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.people),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   }
