@@ -37,4 +37,4 @@ services:
     networks:
       - recipe-diary
     ports:
-      - "0.0.0.0:80:4000"
+      - "0.0.0.0:4000:4000"
