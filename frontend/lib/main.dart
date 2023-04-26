@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'shared_preferences.dart';
+import "profile.dart";
 import 'search.dart';
 
 void main() => runApp(MyApp());
@@ -9,7 +10,8 @@ void main() => runApp(MyApp());
 void _logout(BuildContext context) async {
   String? token = await MySharedPreferences.getToken();
   print(token);
-  final url = Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/logout');
+  final url =
+      Uri.parse('http://recipediary.bucaramanga.upb.edu.co:4000/api/logout');
   final headers = {'Authorization': 'Bearer ${token}'};
   print(headers);
 
@@ -22,22 +24,28 @@ void _logout(BuildContext context) async {
     // Si el servidor retornó 200 OK
     // Navigate to the login page
     print('Successfully logged out');
-    await MySharedPreferences.clearToken();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MyHomePage(title: 'Recipe Diary'),
-      ),
-    );
   } else {
     // De lo contrario, throw exception
     // Mostrar snackbar con mensaje de error
     print("Error en cerrar la sesión");
-    await MySharedPreferences.clearToken();
+  }
+  await MySharedPreferences.clearToken();
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => MyHomePage(title: 'Recipe Diary'),
+    ),
+  );
+}
+
+//Si el usuario no ha cerrado su sesión, redireccionar a WelcomeScreen
+void _checkLogin(BuildContext context) async {
+  final token = await MySharedPreferences.getToken();
+  if (token != null) {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => MyHomePage(title: 'Recipe Diary'),
+        builder: (context) => WelcomeScreen(),
       ),
     );
   }
@@ -87,6 +95,8 @@ class _MyHomePageState extends State<MyHomePage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    // Call _checkLogin method here
+    _checkLogin(context);
   }
 
   @override
@@ -105,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage>
       final password = _passwordLoginController.text;
 
       final url =
-          Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/login');
+          Uri.parse('http://recipediary.bucaramanga.upb.edu.co:4000/api/login');
       final headers = {'Content-Type': 'application/json'};
       final body = json.encode({
         'username': username,
@@ -162,8 +172,8 @@ class _MyHomePageState extends State<MyHomePage>
       final username = _usernameSignupController.text;
       final password = _passwordSignupController.text;
 
-      final url =
-          Uri.parse('http://recipediary.bucaramanga.upb.edu.co/api/register');
+      final url = Uri.parse(
+          'http://recipediary.bucaramanga.upb.edu.co:4000/api/register');
       final headers = {'Content-Type': 'application/json'};
       final body = json.encode({
         'username': username,
@@ -645,7 +655,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
         children: [
           IconButton(
             icon: Icon(Icons.home),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyHomePage(title: 'Recipe Diary'),
+                ),
+              );
+            },
           ),
           IconButton(
             icon: Icon(Icons.kitchen),
@@ -657,7 +674,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.person),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyProfile(),
+                ),
+              );
+            },
           ),
         ],
       ),
