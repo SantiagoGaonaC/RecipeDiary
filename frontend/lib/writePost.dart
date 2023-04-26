@@ -12,21 +12,41 @@ class ComposePostPage extends StatefulWidget {
 
 class _ComposePostPageState extends State<ComposePostPage> {
   final _formKey = GlobalKey<FormState>();
-  String? _title = '';
-  String? _body = '';
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _bodyController = TextEditingController();
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _bodyController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Publicar nuevo post'),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xff6A5BF2), Color(0xff5AAC69)],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+          ),
+        ),
       ),
       body: Form(
         key: _formKey,
         child: ListView(
           padding: EdgeInsets.all(16.0),
           children: [
+            SizedBox(
+              height: 30,
+            ),
             TextFormField(
+              controller: _titleController,
               decoration: InputDecoration(
                 hintText: 'Digite un título',
               ),
@@ -36,12 +56,10 @@ class _ComposePostPageState extends State<ComposePostPage> {
                 }
                 return null;
               },
-              onSaved: (value) {
-                _title = value;
-              },
             ),
             SizedBox(height: 16.0),
             TextFormField(
+              controller: _bodyController,
               decoration: InputDecoration(
                 hintText: 'Digite el contenido',
               ),
@@ -53,14 +71,27 @@ class _ComposePostPageState extends State<ComposePostPage> {
                 }
                 return null;
               },
-              onSaved: (value) {
-                _body = value;
-              },
             ),
             SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: _submitForm,
-              child: Text('Post'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 100,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Color(0xff6A5BF2)),
+                    onPressed: _submitForm,
+                    child: Text(
+                      'Post',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -68,12 +99,47 @@ class _ComposePostPageState extends State<ComposePostPage> {
     );
   }
 
-  void _submitForm() {
+  void _submitForm() async {
     if (_formKey.currentState?.validate() == true) {
-      _formKey.currentState?.save();
       // Here you can send the post data to an API or store it locally
-      print('Title: $_title\nBody: $_body');
-      Navigator.pop(context);
+      final title = _titleController.text;
+      final content = _bodyController.text;
+
+      final url = Uri.parse(
+          'http://recipediary.bucaramanga.upb.edu.co:4000/api/socmed/post');
+      String? token = await MySharedPreferences.getToken();
+      print(token);
+      final headers = {
+        'Authorization': 'Bearer ${token}',
+        'Content-Type': 'application/json'
+      };
+      final body = json.encode({
+        "title": title,
+        "content": content,
+      });
+
+      final response = await http.post(
+        url,
+        headers: headers,
+        body: body,
+      );
+
+      if (response.statusCode == 200) {
+        print('Success publishing new post');
+        print('Title: $title\nBody: $content');
+        Navigator.pop(context, true);
+      } else {
+        print('Failed to fetch: not code 200');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Hubo un error publicando el post.'),
+          ),
+        );
+        print('Title: $title\nBody: $content');
+        print(response.statusCode);
+        print(response.body.toString());
+        throw Exception('There was an error submitting the post');
+      }
     }
   }
 }

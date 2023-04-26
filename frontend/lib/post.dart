@@ -5,19 +5,22 @@ import 'package:http/http.dart' as http;
 import 'shared_preferences.dart';
 
 class Post {
+  final String postId;
   final String userId;
   final String title;
   final String content;
   final DateTime createdAt;
 
   const Post(
-      {required this.userId,
+      {required this.postId,
+      required this.userId,
       required this.title,
       required this.content,
       required this.createdAt});
 
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
+      postId: json['_id'] as String,
       userId: json['userId'] as String,
       title: json['title'] as String,
       content: json['content'] as String,
@@ -26,14 +29,14 @@ class Post {
   }
 }
 
-Future<List<Post>> fetchPosts() async {
+Future<List<Post>> fetchMyPosts() async {
   print("---------------------FETCHING POSTS------------------");
   String? token = await MySharedPreferences.getToken();
   if (token == null) {
     throw Exception('Token is null');
   }
   final url = Uri.parse(
-      'http://recipediary.bucaramanga.upb.edu.co:4000/api/socmed/posts');
+      'http://recipediary.bucaramanga.upb.edu.co:4000/api/socmed/my-posts');
   final headers = {'Authorization': 'Bearer ${token}'};
 
   try {
@@ -61,14 +64,12 @@ List<Post> parsePosts(String responseBody) {
   print("---------------------PARSING POSTS------------------");
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
   final parsedWithoutV = parsed.map((map) => map..remove('__v')).toList();
-  final parsedWithoutP =
-      parsedWithoutV.map((map) => map..remove('_id')).toList();
-  print(parsedWithoutP);
-  print(parsedWithoutP.runtimeType);
+  print(parsedWithoutV);
+  print(parsedWithoutV.runtimeType);
 
   try {
     List<Post> lista =
-        parsedWithoutP.map<Post>((json) => Post.fromJson(json)).toList();
+        parsedWithoutV.map<Post>((json) => Post.fromJson(json)).toList();
     return lista;
   } catch (e) {
     print("Failed to parse posts: $e");

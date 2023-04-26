@@ -158,7 +158,7 @@ class MyProfile extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: 10),
                         decoration: BoxDecoration(
-                          color: Colors.green,
+                          color: Color(0xff5AAC69),
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: Center(
@@ -179,14 +179,22 @@ class MyProfile extends StatelessWidget {
                     SizedBox(
                       width: 40,
                       child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           // Action to be performed on button press
-                          Navigator.push(
+                          final result = await Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => ComposePostPage(),
                             ),
                           );
+                          if (result == true) {
+                            Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyProfile(),
+                            ),
+                          );
+                          }
                         },
                         child: Text(
                           '+',
@@ -213,7 +221,7 @@ class MyProfile extends StatelessWidget {
             ),
           ),
           FutureBuilder<List<Post>>(
-            future: fetchPosts(),
+            future: fetchMyPosts(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return SliverToBoxAdapter(
@@ -257,7 +265,7 @@ class MyProfileV extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           posts[index].title,
@@ -273,6 +281,48 @@ class MyProfileV extends StatelessWidget {
                           style: TextStyle(fontSize: 14),
                         ),
                       ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      // handle trashcan button press
+                      print("Pressed trashcan $index");
+                      final token = await MySharedPreferences.getToken();
+                      print(token);
+                      final postId = posts[index].postId;
+                      print(postId);
+                      final url = Uri.parse(
+                          'http://recipediary.bucaramanga.upb.edu.co:4000/api/socmed/post/${postId}');
+                      final headers = {'Authorization': 'Bearer ${token}'};
+
+                      final response = await http.delete(
+                        url,
+                        headers: headers,
+                      );
+
+                      if (response.statusCode == 200) {
+                        print("Post deleted successfully");
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MyProfile(),
+                          ),
+                        );
+                      } else {
+                        print(
+                            "There was an error deleting the post, try again or relog.");
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                                'Error borrando el post. Vuelva a intentarlo o inicie sesión nuevamente.'),
+                          ),
+                        );
+                      }
+                    },
+                    child: Icon(
+                      Icons.delete,
+                      color: Colors.black,
+                      size: 16,
                     ),
                   ),
                 ],
