@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'shared_preferences.dart';
+import "profile.dart";
 import 'search.dart';
 
 void main() => runApp(MyApp());
@@ -35,6 +36,19 @@ void _logout(BuildContext context) async {
       builder: (context) => MyHomePage(title: 'Recipe Diary'),
     ),
   );
+}
+
+//Si el usuario no ha cerrado su sesión, redireccionar a WelcomeScreen
+void _checkLogin(BuildContext context) async {
+  final token = await MySharedPreferences.getToken();
+  if (token != null) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => WelcomeScreen(),
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -81,6 +95,8 @@ class _MyHomePageState extends State<MyHomePage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    // Call _checkLogin method here
+    _checkLogin(context);
   }
 
   @override
@@ -639,7 +655,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
         children: [
           IconButton(
             icon: Icon(Icons.home),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyHomePage(title: 'Recipe Diary'),
+                ),
+              );
+            },
           ),
           IconButton(
             icon: Icon(Icons.kitchen),
@@ -651,7 +674,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.person),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyProfile(),
+                ),
+              );
+            },
           ),
         ],
       ),
