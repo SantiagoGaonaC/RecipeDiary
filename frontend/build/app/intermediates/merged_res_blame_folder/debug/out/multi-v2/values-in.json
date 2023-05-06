@@ -1,16 +1,57 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.frontend.app-mergeDebugResources-9:/values-in/values-in.xml",
+            "outputFile": "com.example.frontend.app-mergeDebugResources-15:/values-in/values-in.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\SANTIAGO ESPINAL\\.gradle\\caches\\transforms-3\\7e9df2ac2213a6bd3cef0f2f27870d79\\transformed\\core-1.6.0\\res\\values-in\\values-in.xml",
+                    "source": "C:\\Users\\SANTIAGO ESPINAL\\.gradle\\caches\\transforms-3\\b0342eb4db18307a8b3a3ac4a3a8ddf6\\transformed\\jetified-exoplayer-core-2.18.5\\res\\values-in\\values-in.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,123,185,250,313,389,453,553,647",
+                        "endColumns": "67,61,64,62,75,63,99,93,68",
+                        "endOffsets": "118,180,245,308,384,448,548,642,711"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "162,230,292,357,420,496,560,660,754",
+                        "endColumns": "67,61,64,62,75,63,99,93,68",
+                        "endOffsets": "225,287,352,415,491,555,655,749,818"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\SANTIAGO ESPINAL\\.gradle\\caches\\transforms-3\\57d13c65eae90a7945dea98c1aa2b720\\transformed\\core-1.7.0\\res\\values-in\\values-in.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
                         "endColumns": "100",
                         "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "16",
+                        "startColumns": "4",
+                        "startOffsets": "1276",
+                        "endColumns": "100",
+                        "endOffsets": "1372"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\SANTIAGO ESPINAL\\.gradle\\caches\\transforms-3\\ed37f6120d996adb3c7fa265c33d84e1\\transformed\\jetified-media2-session-1.2.0\\res\\values-in\\values-in.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,162,258,353,482",
+                        "endColumns": "106,95,94,128,132",
+                        "endOffsets": "157,253,348,477,610"
+                    },
+                    "to": {
+                        "startLines": "2,12,13,14,15",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,823,919,1014,1143",
+                        "endColumns": "106,95,94,128,132",
+                        "endOffsets": "157,914,1009,1138,1271"
                     }
                 }
             ]

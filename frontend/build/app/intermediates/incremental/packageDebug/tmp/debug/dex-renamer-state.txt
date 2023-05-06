@@ -1,9 +1,7 @@
-<<<<<<< HEAD
-#Tue Apr 25 22:51:08 COT 2023
-base.0=C\:\\Users\\SANTIAGO ESPINAL\\Desktop\\Programacion\\Proyectos\\Moviles\\Recipe%20Diary\\frontend\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-=======
-#Wed Apr 26 08:54:42 COT 2023
-base.0=C\:\\Users\\Axel\\Documents\\RecipeDiary\\Recipe%20Diary\\frontend\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
->>>>>>> 60d1ccaee3925f35d2ce96472b88ea6846f34c58
+#Fri May 05 22:52:27 COT 2023
+base.1=C\:\\Users\\SANTIAGO ESPINAL\\Desktop\\Programacion\\Proyectos\\movi2\\Recipe%20Diary\\frontend\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
+path.1=classes2.dex
+base.0=C\:\\Users\\SANTIAGO ESPINAL\\Desktop\\Programacion\\Proyectos\\movi2\\Recipe%20Diary\\frontend\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
 path.0=classes.dex
