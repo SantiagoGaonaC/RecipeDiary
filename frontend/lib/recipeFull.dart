@@ -47,10 +47,16 @@ class _Recipefull extends State<Recipefull> {
       body: ListView(
         children: [
           SizedBox(height: 16.0),
-          Padding(
-            padding: EdgeInsets.only(left: 20.0),
-            child: Text(recta.sTitulo,
-                style: TextStyle(fontSize: 25.0, color: Colors.black)),
+          Center(
+            child: Text(
+              recta.sTitulo,
+              style: TextStyle(
+                fontFamily: 'Varela',
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
           ),
           SizedBox(height: 15.0),
           Hero(
@@ -58,8 +64,15 @@ class _Recipefull extends State<Recipefull> {
               child: Image.network(recta.sImagen,
                   height: 150.0, width: 100.0, fit: BoxFit.contain)),
           SizedBox(height: 20.0),
-          HtmlWidget(
-            recta.sSumary,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: HtmlWidget(
+              '<p style="text-align: justify;"> ${recta.sSumary}</p>',
+              textStyle: TextStyle(
+                fontFamily: 'Varela',
+                fontSize: 16.0,
+              ),
+            ),
           ),
           SizedBox(height: 20.0),
           Center(
@@ -70,15 +83,16 @@ class _Recipefull extends State<Recipefull> {
             ),
           ),
           SizedBox(height: 20.0),
-          Center(
-            child: Container(
-              width: MediaQuery.of(context).size.width - 50.0,
-              child: Text(recta.ingredientes,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: 'Varela',
-                    fontSize: 16.0,
-                  )),
+          Container(
+            width: MediaQuery.of(context).size.width - 50.0,
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              recta.ingredientes,
+              textAlign: TextAlign.justify,
+              style: TextStyle(
+                fontFamily: 'Varela',
+                fontSize: 16.0,
+              ),
             ),
           ),
           SizedBox(height: 20.0),
@@ -90,8 +104,15 @@ class _Recipefull extends State<Recipefull> {
             ),
           ),
           SizedBox(height: 20.0),
-          HtmlWidget(
-            recta.sIntru,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: HtmlWidget(
+              '<p style="text-align: justify;"> ${recta.sIntru}</p>',
+              textStyle: TextStyle(
+                fontFamily: 'Varela',
+                fontSize: 16.0,
+              ),
+            ),
           ),
           SizedBox(height: 20.0),
           Center(
@@ -102,16 +123,15 @@ class _Recipefull extends State<Recipefull> {
             ),
           ),
           SizedBox(height: 20.0),
-          Center(
-            child: Container(
-              width: MediaQuery.of(context).size.width - 50.0,
-              child: Text(recta.sPasos,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: 'Varela',
-                    fontSize: 16.0,
-                  )),
-            ),
+          Container(
+            width: MediaQuery.of(context).size.width - 50.0,
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text(recta.sPasos,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  fontFamily: 'Varela',
+                  fontSize: 16.0,
+                )),
           ),
         ],
       ),

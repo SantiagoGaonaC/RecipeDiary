@@ -70,6 +70,13 @@ class _MyAppState extends State<selectIngrediet>
               ),
             ),
           ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.exit_to_app),
+              padding: EdgeInsets.only(right: 15),
+              onPressed: () => _logout(context),
+            ),
+          ],
         ),
         body: ListView(
           children: <Widget>[

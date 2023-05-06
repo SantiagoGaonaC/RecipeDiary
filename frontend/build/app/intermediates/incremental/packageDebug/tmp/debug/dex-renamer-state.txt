@@ -1,4 +1,4 @@
-#Fri May 05 23:19:10 COT 2023
+#Sat May 06 08:49:58 COT 2023
 base.1=C\:\\Users\\Axel\\Documents\\RecipeDiary\\Recipe%20Diary\\frontend\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
 path.1=classes2.dex
 base.0=C\:\\Users\\Axel\\Documents\\RecipeDiary\\Recipe%20Diary\\frontend\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
