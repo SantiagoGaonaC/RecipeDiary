@@ -1,0 +1,20 @@
+trigger:
+  branches:
+    include:
+    - main # Asegúrate de cambiar 'main' al nombre de la rama que deseas que dispare el proceso de CI/CD.
+
+pool:
+  name: 'recipediary' # Cambia esto al nombre de tu Agent Pool
+
+steps:
+- script: |
+    cd /opt/backend/Recipe%20Diary/
+    git pull
+  displayName: 'Actualizar el repositorio en el servidor'
+
+  displayName: 'Instalación de Docker'
+- script: |
+    sudo docker compose -f /opt/backend/Recipe%20Diary/docker-compose.yaml down --remove-orphans --rmi all -v
+    sudo docker compose -f /opt/backend/Recipe%20Diary/docker-compose.yaml build
+    sudo docker compose -f /opt/backend/Recipe%20Diary/docker-compose.yaml up -d
+  displayName: 'Despliegue de Docker Compose'
