@@ -4,7 +4,7 @@
             "outputFile": "com.example.frontend.app-mergeDebugResources-15:/values-pt-rBR/values-pt-rBR.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\SANTIAGO ESPINAL\\.gradle\\caches\\transforms-3\\57d13c65eae90a7945dea98c1aa2b720\\transformed\\core-1.7.0\\res\\values-pt-rBR\\values-pt-rBR.xml",
+                    "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-3\\57d13c65eae90a7945dea98c1aa2b720\\transformed\\core-1.7.0\\res\\values-pt-rBR\\values-pt-rBR.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\SANTIAGO ESPINAL\\.gradle\\caches\\transforms-3\\ed37f6120d996adb3c7fa265c33d84e1\\transformed\\jetified-media2-session-1.2.0\\res\\values-pt-rBR\\values-pt-rBR.xml",
+                    "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-3\\ed37f6120d996adb3c7fa265c33d84e1\\transformed\\jetified-media2-session-1.2.0\\res\\values-pt-rBR\\values-pt-rBR.xml",
                     "from": {
                         "startLines": "2,3,4,5,6",
                         "startColumns": "4,4,4,4,4",

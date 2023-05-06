@@ -26,7 +26,7 @@ class _ComposePostPageState extends State<ComposePostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Publicar nuevo post'),
+        title: Text('Add new post'),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -48,11 +48,11 @@ class _ComposePostPageState extends State<ComposePostPage> {
             TextFormField(
               controller: _titleController,
               decoration: InputDecoration(
-                hintText: 'Digite un título',
+                hintText: 'Input a title',
               ),
               validator: (value) {
                 if (value?.isEmpty ?? true) {
-                  return 'Por favor digite un título';
+                  return 'Please add a title for your post';
                 }
                 return null;
               },
@@ -61,13 +61,13 @@ class _ComposePostPageState extends State<ComposePostPage> {
             TextFormField(
               controller: _bodyController,
               decoration: InputDecoration(
-                hintText: 'Digite el contenido',
+                hintText: 'Input a body',
               ),
               maxLines: null,
               keyboardType: TextInputType.multiline,
               validator: (value) {
                 if (value?.isEmpty ?? true) {
-                  return 'Por favor digite el contenido';
+                  return 'Please add some content to your post';
                 }
                 return null;
               },
@@ -132,7 +132,7 @@ class _ComposePostPageState extends State<ComposePostPage> {
         print('Failed to fetch: not code 200');
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Hubo un error publicando el post.'),
+            content: Text('There was an error submitting the post.'),
           ),
         );
         print('Title: $title\nBody: $content');

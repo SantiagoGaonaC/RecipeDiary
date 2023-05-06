@@ -13,38 +13,38 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\android\app\src\debug\AndroidManifest.xml:7:5-66
-15-->C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\android\app\src\debug\AndroidManifest.xml:7:22-64
+15-->C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\android\app\src\debug\AndroidManifest.xml:7:5-66
+15-->C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\android\app\src\debug\AndroidManifest.xml:7:22-64
 16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-16-->[com.google.android.exoplayer:exoplayer-core:2.18.5] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\b0342eb4db18307a8b3a3ac4a3a8ddf6\transformed\jetified-exoplayer-core-2.18.5\AndroidManifest.xml:24:5-79
-16-->[com.google.android.exoplayer:exoplayer-core:2.18.5] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\b0342eb4db18307a8b3a3ac4a3a8ddf6\transformed\jetified-exoplayer-core-2.18.5\AndroidManifest.xml:24:22-76
+16-->[com.google.android.exoplayer:exoplayer-core:2.18.5] C:\Users\Axel\.gradle\caches\transforms-3\b0342eb4db18307a8b3a3ac4a3a8ddf6\transformed\jetified-exoplayer-core-2.18.5\AndroidManifest.xml:24:5-79
+16-->[com.google.android.exoplayer:exoplayer-core:2.18.5] C:\Users\Axel\.gradle\caches\transforms-3\b0342eb4db18307a8b3a3ac4a3a8ddf6\transformed\jetified-exoplayer-core-2.18.5\AndroidManifest.xml:24:22-76
 17
 18    <queries>
-18-->[androidx.media2:media2-session:1.2.0] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:24:5-34:15
+18-->[androidx.media2:media2-session:1.2.0] C:\Users\Axel\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:24:5-34:15
 19        <intent>
-19-->[androidx.media2:media2-session:1.2.0] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:25:9-27:18
+19-->[androidx.media2:media2-session:1.2.0] C:\Users\Axel\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:25:9-27:18
 20            <action android:name="android.media.browse.MediaBrowserService" />
-20-->[androidx.media2:media2-session:1.2.0] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:26:13-79
-20-->[androidx.media2:media2-session:1.2.0] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:26:21-76
+20-->[androidx.media2:media2-session:1.2.0] C:\Users\Axel\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:26:13-79
+20-->[androidx.media2:media2-session:1.2.0] C:\Users\Axel\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:26:21-76
 21        </intent>
 22        <intent>
-22-->[androidx.media2:media2-session:1.2.0] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:28:9-30:18
+22-->[androidx.media2:media2-session:1.2.0] C:\Users\Axel\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:28:9-30:18
 23            <action android:name="androidx.media2.session.MediaSessionService" />
-23-->[androidx.media2:media2-session:1.2.0] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:29:13-82
-23-->[androidx.media2:media2-session:1.2.0] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:29:21-79
+23-->[androidx.media2:media2-session:1.2.0] C:\Users\Axel\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:29:13-82
+23-->[androidx.media2:media2-session:1.2.0] C:\Users\Axel\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:29:21-79
 24        </intent>
 25        <intent>
-25-->[androidx.media2:media2-session:1.2.0] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:31:9-33:18
+25-->[androidx.media2:media2-session:1.2.0] C:\Users\Axel\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:31:9-33:18
 26            <action android:name="androidx.media2.session.MediaLibraryService" />
-26-->[androidx.media2:media2-session:1.2.0] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:32:13-82
-26-->[androidx.media2:media2-session:1.2.0] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:32:21-79
+26-->[androidx.media2:media2-session:1.2.0] C:\Users\Axel\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:32:13-82
+26-->[androidx.media2:media2-session:1.2.0] C:\Users\Axel\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\AndroidManifest.xml:32:21-79
 27        </intent>
 28    </queries>
 29
 30    <application
 31        android:name="android.app.Application"
 32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-32-->[androidx.core:core:1.7.0] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\57d13c65eae90a7945dea98c1aa2b720\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+32-->[androidx.core:core:1.7.0] C:\Users\Axel\.gradle\caches\transforms-3\57d13c65eae90a7945dea98c1aa2b720\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 33        android:debuggable="true"
 34        android:icon="@mipmap/ic_launcher"
 35        android:label="frontend" >
@@ -82,26 +82,26 @@
 67            android:value="2" />
 68
 69        <activity
-69-->[:url_launcher_android] C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
+69-->[:url_launcher_android] C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
 70            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-70-->[:url_launcher_android] C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
+70-->[:url_launcher_android] C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
 71            android:exported="false"
-71-->[:url_launcher_android] C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
+71-->[:url_launcher_android] C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
 72            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-72-->[:url_launcher_android] C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
+72-->[:url_launcher_android] C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
 73
 74        <uses-library
-74-->[androidx.window:window:1.0.0-beta04] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+74-->[androidx.window:window:1.0.0-beta04] C:\Users\Axel\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 75            android:name="androidx.window.extensions"
-75-->[androidx.window:window:1.0.0-beta04] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+75-->[androidx.window:window:1.0.0-beta04] C:\Users\Axel\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
 76            android:required="false" />
-76-->[androidx.window:window:1.0.0-beta04] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+76-->[androidx.window:window:1.0.0-beta04] C:\Users\Axel\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
 77        <uses-library
-77-->[androidx.window:window:1.0.0-beta04] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+77-->[androidx.window:window:1.0.0-beta04] C:\Users\Axel\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
 78            android:name="androidx.window.sidecar"
-78-->[androidx.window:window:1.0.0-beta04] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+78-->[androidx.window:window:1.0.0-beta04] C:\Users\Axel\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
 79            android:required="false" />
-79-->[androidx.window:window:1.0.0-beta04] C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+79-->[androidx.window:window:1.0.0-beta04] C:\Users\Axel\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
 80    </application>
 81
 82</manifest>

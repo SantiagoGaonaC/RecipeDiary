@@ -59,7 +59,7 @@ class ItemsList extends StatelessWidget {
                   borderSide: BorderSide(
                       width: 1, color: Colors.black, style: BorderStyle.solid)),
               hintStyle: TextStyle(color: Colors.black),
-              hintText: "lista de ingredientes",
+              hintText: "Ingredient list",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(10),
               ),
@@ -143,34 +143,40 @@ class ItemsList extends StatelessWidget {
           SizedBox(
             width: 10,
           ),
-          SizedBox(
-            width: 40,
-            child: ElevatedButton(
-              onPressed: () async {
-                //String? d = await getListRecipes(context);
-                final result = await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        listRecipes(ListRecipe: getListRecipes()),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                width: 200,
+                height: 40,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    //String? d = await getListRecipes(context);
+                    final result = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            listRecipes(ListRecipe: getListRecipes()),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Add ingredients',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
-                );
-              },
-              child: Text(
-                'Agregar ingredientes',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xff5AAC69),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(60),
+                    ),
+                  ),
                 ),
               ),
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xff5AAC69),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-            ),
+            ],
           ),
         ],
       ),

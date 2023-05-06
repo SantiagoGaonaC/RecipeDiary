@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage>
     if (_loginFormKey.currentState!.validate()) {
       // Si ambos campos se han llenado, hacer el login
       print('Username: ${_usernameLoginController.text}');
-      print('Contraseña: ${_passwordLoginController.text}');
+      print('Password: ${_passwordLoginController.text}');
 
       final username = _usernameLoginController.text;
       final password = _passwordLoginController.text;
@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage>
           // Mostrar snackbar con mensaje de error
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('Credenciales de inicio de sesión incorrectas'),
+              content: Text('Incorrect login credentials'),
             ),
           );
         });
@@ -166,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage>
       print('Name: ${_nameSignupController.text}');
       print('Last Name: ${_lastNameSignupController.text}');
       print('Username: ${_usernameSignupController.text}');
-      print('Contraseña: ${_passwordSignupController.text}');
+      print('Password: ${_passwordSignupController.text}');
 
       final name = _nameSignupController.text;
       final lastName = _lastNameSignupController.text;
@@ -200,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage>
           //Mostrar un mensaje de registro exitoso
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('La cuenta se ha creado exitosamente.'),
+              content: Text('The account was created successfully.'),
               duration: Duration(seconds: 4),
               action: SnackBarAction(
                 label: 'x',
@@ -218,7 +218,7 @@ class _MyHomePageState extends State<MyHomePage>
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                  'Hubo un error creando el usuario. Inténtelo nuevamente.'),
+                  'There was an error creating your account. Please try again.'),
               duration: Duration(seconds: 4),
               action: SnackBarAction(
                 label: 'x',
@@ -259,7 +259,7 @@ class _MyHomePageState extends State<MyHomePage>
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
-                    'Inicio',
+                    'Login',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -272,7 +272,7 @@ class _MyHomePageState extends State<MyHomePage>
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
-                    'Registro',
+                    'Register',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -297,7 +297,7 @@ class _MyHomePageState extends State<MyHomePage>
                   controller: _usernameLoginController,
                   decoration: InputDecoration(
                     labelText: 'Username',
-                    hintText: 'Ingrese su usuario...',
+                    hintText: 'Input your username...',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey,
@@ -315,7 +315,7 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Por favor digite su usuario';
+                      return 'Please input your username';
                     }
                     return null;
                   },
@@ -324,8 +324,8 @@ class _MyHomePageState extends State<MyHomePage>
                 TextFormField(
                   controller: _passwordLoginController,
                   decoration: InputDecoration(
-                    labelText: 'Contraseña',
-                    hintText: 'Ingrese su contraseña...',
+                    labelText: 'Password',
+                    hintText: 'Input your password...',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey,
@@ -357,7 +357,7 @@ class _MyHomePageState extends State<MyHomePage>
                   obscureText: !_passwordVisible,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Por favor digite su contraseña';
+                      return 'Please input your password';
                     }
                     return null;
                   },
@@ -369,7 +369,7 @@ class _MyHomePageState extends State<MyHomePage>
                     ElevatedButton(
                       onPressed: _login,
                       child: Text(
-                        'Ingresar',
+                        'Login',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -396,8 +396,8 @@ class _MyHomePageState extends State<MyHomePage>
                 TextFormField(
                   controller: _nameSignupController,
                   decoration: InputDecoration(
-                    labelText: 'Nombre',
-                    hintText: 'Ingrese su nombre...',
+                    labelText: 'Name',
+                    hintText: 'Input your name...',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey,
@@ -415,7 +415,7 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Por favor digite su nombre';
+                      return 'Please input your name';
                     }
                     return null;
                   },
@@ -424,8 +424,8 @@ class _MyHomePageState extends State<MyHomePage>
                 TextFormField(
                   controller: _lastNameSignupController,
                   decoration: InputDecoration(
-                    labelText: 'Apellido',
-                    hintText: 'Ingrese su apellido...',
+                    labelText: 'Last name',
+                    hintText: 'Input your last name...',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey,
@@ -443,7 +443,7 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Por favor digite su apellido';
+                      return 'Please input your last name';
                     }
                     return null;
                   },
@@ -452,8 +452,8 @@ class _MyHomePageState extends State<MyHomePage>
                 TextFormField(
                   controller: _usernameSignupController,
                   decoration: InputDecoration(
-                    labelText: 'Usuario',
-                    hintText: 'Ingrese su usuario...',
+                    labelText: 'Username',
+                    hintText: 'Input your username...',
                     counterText: "",
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -473,7 +473,7 @@ class _MyHomePageState extends State<MyHomePage>
                   maxLength: 15,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Por favor digite su usuario';
+                      return 'Please input your username';
                     }
                     return null;
                   },
@@ -482,8 +482,8 @@ class _MyHomePageState extends State<MyHomePage>
                 TextFormField(
                   controller: _passwordSignupController,
                   decoration: InputDecoration(
-                    labelText: 'Contraseña',
-                    hintText: 'Ingrese su contraseña...',
+                    labelText: 'Password',
+                    hintText: 'Input your password...',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey,
@@ -515,7 +515,7 @@ class _MyHomePageState extends State<MyHomePage>
                   obscureText: !_passwordVisible,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Por favor digite su contraseña';
+                      return 'Please input your password';
                     }
                     return null;
                   },
@@ -526,7 +526,7 @@ class _MyHomePageState extends State<MyHomePage>
                   child: ElevatedButton(
                     onPressed: _signup,
                     child: Text(
-                      'Registrar',
+                      'Sign up',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight:
@@ -589,7 +589,7 @@ class WelcomeScreen extends StatelessWidget {
           SliverToBoxAdapter(
             child: Center(
               child: Text(
-                '¡Bienvenido!',
+                '¡Welcome!',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -605,9 +605,9 @@ class WelcomeScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _buildBigButton(context, Icons.restaurant_menu, 'Comidas', 0),
+                  _buildBigButton(context, Icons.restaurant_menu, 'Recipes', 0),
                   SizedBox(width: 16),
-                  _buildBigButton(context, Icons.people, 'Red social', 1),
+                  _buildBigButton(context, Icons.people, 'Social media', 1),
                 ],
               ),
             ),
@@ -624,6 +624,12 @@ class WelcomeScreen extends StatelessWidget {
       onPressed: () {
         if (option == 0) {
           //Pressed Comidas button
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => selectIngrediet(),
+            ),
+          );
         } else if (option == 1) {
           //Pressed Social Media button
           Navigator.pushReplacement(

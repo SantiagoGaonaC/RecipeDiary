@@ -60,7 +60,7 @@ class _MyAppState extends State<selectIngrediet>
       debugShowCheckedModeBanner: false,
       home: new Scaffold(
         appBar: AppBar(
-          title: Text('Escoger ingredientes'),
+          title: Text('Pick your ingredients'),
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(

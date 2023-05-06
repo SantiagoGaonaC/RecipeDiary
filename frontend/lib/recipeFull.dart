@@ -33,7 +33,7 @@ class _Recipefull extends State<Recipefull> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Receta'),
+        title: Text('Recipe'),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -65,7 +65,7 @@ class _Recipefull extends State<Recipefull> {
           Center(
             child: Padding(
               padding: EdgeInsets.only(left: 20.0),
-              child: Text("Ingredientes",
+              child: Text("Ingredients",
                   style: TextStyle(fontSize: 25.0, color: Colors.black)),
             ),
           ),
@@ -85,7 +85,7 @@ class _Recipefull extends State<Recipefull> {
           Center(
             child: Padding(
               padding: EdgeInsets.only(left: 20.0),
-              child: Text("Instrucciones",
+              child: Text("Instructions",
                   style: TextStyle(fontSize: 25.0, color: Colors.black)),
             ),
           ),
@@ -97,7 +97,7 @@ class _Recipefull extends State<Recipefull> {
           Center(
             child: Padding(
               padding: EdgeInsets.only(left: 20.0),
-              child: Text("Pasos",
+              child: Text("Steps",
                   style: TextStyle(fontSize: 25.0, color: Colors.black)),
             ),
           ),
@@ -114,13 +114,6 @@ class _Recipefull extends State<Recipefull> {
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.favorite),
       ),
     );
   }

@@ -165,7 +165,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                 children: [
                   SizedBox(height: 20.0),
                   Text(
-                    'BUSCADOR DE USUARIOS',
+                    'USER FINDER',
                     style:
                         TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
@@ -176,7 +176,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                         child: TextField(
                           controller: _searchController,
                           decoration: InputDecoration(
-                            hintText: 'Digite un nombre o usuario',
+                            hintText: 'Search for a name or username',
                             suffixIcon: Icon(Icons.search),
                           ),
                         ),
@@ -194,7 +194,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                             print('Search button clicked');
                             _searchUser(context);
                           },
-                          child: Text('Buscar'),
+                          child: Text('Search'),
                         ),
                       ),
                     ],
