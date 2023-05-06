@@ -1,13 +1,27 @@
-com.example.frontend.app-jetified-window-1.0.0-beta04-0 C:\Users\Axel\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\res
-com.example.frontend.app-jetified-annotation-experimental-1.1.0-1 C:\Users\Axel\.gradle\caches\transforms-3\6c0c163cc77ae6c91f9f7dfcd179c29c\transformed\jetified-annotation-experimental-1.1.0\res
-com.example.frontend.app-core-1.6.0-2 C:\Users\Axel\.gradle\caches\transforms-3\7e9df2ac2213a6bd3cef0f2f27870d79\transformed\core-1.6.0\res
-com.example.frontend.app-jetified-window-java-1.0.0-beta04-3 C:\Users\Axel\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\res
-com.example.frontend.app-debug-4 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\android\app\src\debug\res
-com.example.frontend.app-main-5 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\android\app\src\main\res
-com.example.frontend.app-pngs-6 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\app\generated\res\pngs\debug
-com.example.frontend.app-resValues-7 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\app\generated\res\resValues\debug
-com.example.frontend.app-rs-8 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\app\generated\res\rs\debug
-com.example.frontend.app-mergeDebugResources-9 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
-com.example.frontend.app-mergeDebugResources-10 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
-com.example.frontend.app-merged_res-11 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\app\intermediates\merged_res\debug
-com.example.frontend.app-packaged_res-12 C:\Users\Axel\Documents\RecipeDiary\Recipe%20Diary\frontend\build\shared_preferences_android\intermediates\packaged_res\debug
+com.example.frontend.app-jetified-window-1.0.0-beta04-0 C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\res
+com.example.frontend.app-media-1.4.1-1 C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\33aeac6041f7f32f65addefb234a1ba0\transformed\media-1.4.1\res
+com.example.frontend.app-core-1.7.0-2 C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\57d13c65eae90a7945dea98c1aa2b720\transformed\core-1.7.0\res
+com.example.frontend.app-jetified-annotation-experimental-1.1.0-3 C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\6c0c163cc77ae6c91f9f7dfcd179c29c\transformed\jetified-annotation-experimental-1.1.0\res
+com.example.frontend.app-lifecycle-runtime-2.3.1-4 C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\9a249567dcb8025899915ed9a2426636\transformed\lifecycle-runtime-2.3.1\res
+com.example.frontend.app-jetified-window-java-1.0.0-beta04-5 C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ae81e06d24c799147c26814497a2a305\transformed\jetified-window-java-1.0.0-beta04\res
+com.example.frontend.app-jetified-exoplayer-core-2.18.5-6 C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\b0342eb4db18307a8b3a3ac4a3a8ddf6\transformed\jetified-exoplayer-core-2.18.5\res
+com.example.frontend.app-jetified-media2-common-1.2.0-7 C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\c610320667e2745d5b32674eee2adecf\transformed\jetified-media2-common-1.2.0\res
+com.example.frontend.app-jetified-media2-session-1.2.0-8 C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\ed37f6120d996adb3c7fa265c33d84e1\transformed\jetified-media2-session-1.2.0\res
+com.example.frontend.app-webkit-1.6.1-9 C:\Users\SANTIAGO ESPINAL\.gradle\caches\transforms-3\fbde3087ed810297459ac43dc5e873e6\transformed\webkit-1.6.1\res
+com.example.frontend.app-debug-10 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\android\app\src\debug\res
+com.example.frontend.app-main-11 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\android\app\src\main\res
+com.example.frontend.app-pngs-12 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\app\generated\res\pngs\debug
+com.example.frontend.app-resValues-13 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\app\generated\res\resValues\debug
+com.example.frontend.app-rs-14 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\app\generated\res\rs\debug
+com.example.frontend.app-mergeDebugResources-15 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.frontend.app-mergeDebugResources-16 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.frontend.app-merged_res-17 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\app\intermediates\merged_res\debug
+com.example.frontend.app-packaged_res-18 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\audio_session\intermediates\packaged_res\debug
+com.example.frontend.app-packaged_res-19 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\just_audio\intermediates\packaged_res\debug
+com.example.frontend.app-packaged_res-20 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\path_provider_android\intermediates\packaged_res\debug
+com.example.frontend.app-packaged_res-21 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\shared_preferences_android\intermediates\packaged_res\debug
+com.example.frontend.app-packaged_res-22 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\sqflite\intermediates\packaged_res\debug
+com.example.frontend.app-packaged_res-23 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\url_launcher_android\intermediates\packaged_res\debug
+com.example.frontend.app-packaged_res-24 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\video_player_android\intermediates\packaged_res\debug
+com.example.frontend.app-packaged_res-25 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\wakelock\intermediates\packaged_res\debug
+com.example.frontend.app-packaged_res-26 C:\Users\SANTIAGO ESPINAL\Desktop\Programacion\Proyectos\movi2\Recipe%20Diary\frontend\build\webview_flutter_android\intermediates\packaged_res\debug

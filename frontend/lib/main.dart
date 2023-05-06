@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:frontend/selectIngrediet.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'shared_preferences.dart';
@@ -649,7 +650,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.kitchen),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => selectIngrediet(),
+                ),
+              );
+            },
           ),
           IconButton(
             icon: Icon(Icons.people),
