@@ -12,7 +12,7 @@ steps:
     git pull
   displayName: 'Actualizar el repositorio en el servidor'
 
-  displayName: 'Instalación de Docker'
+
 - script: |
     sudo docker compose -f /opt/backend/Recipe%20Diary/docker-compose.yaml down --remove-orphans --rmi all -v
     sudo docker compose -f /opt/backend/Recipe%20Diary/docker-compose.yaml build
