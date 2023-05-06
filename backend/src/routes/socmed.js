@@ -3,18 +3,20 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const postsm = require("../models/postsocmed");
 const User = require("../models/user");
+const { getFollowedUsers } = require('../controller/userController');
+const { deletePost } = require("../controller/postController");
 
 router.post("/api/socmed/post", auth, async (req, res) => {
   try {
     const { title, content } = req.body;
 
     // Validar formato de los datos
-    if (typeof title !== "string" || title.trim().length === 0) {
+    if (typeof title !== "String" && typeof title !== "string" || title.trim().length === 0) {
       return res.status(400).json({
         error: "El título del post debe ser una cadena de texto no vacía",
       });
     }
-    if (typeof content !== "string" || content.trim().length === 0) {
+    if (typeof content !== "String" && typeof content !== "string" || content.trim().length === 0) {
       return res.status(400).json({
         error: "El contenido del post debe ser una cadena de texto no vacía",
       });
@@ -50,7 +52,7 @@ router.post("/api/socmed/follow", auth, async (req, res) => {
     const { username } = req.body;
 
     // Validar formato de los datos
-    if (typeof username !== "string" || username.trim().length === 0) {
+    if (typeof username !== "String" || typeof username !== "string" || username.trim().length === 0) {
       return res.status(400).json({
         error: "El nombre de usuario debe ser una cadena de texto no vacía",
       });
@@ -112,7 +114,7 @@ router.post("/api/socmed/unfollow", auth, async (req, res) => {
     const { username } = req.body;
 
     // Validar formato de los datos
-    if (typeof username !== "string" || username.trim().length === 0) {
+    if (typeof username !== "String" && typeof username !== "string" || username.trim().length === 0) {
       return res.status(400).json({
         error: "El nombre de usuario debe ser una cadena de texto no vacía",
       });
@@ -141,6 +143,21 @@ router.post("/api/socmed/unfollow", auth, async (req, res) => {
     res
       .status(500)
       .json({ error: "Ha ocurrido un error al dejar de seguir al usuario" });
+  }
+});
+
+router.get('/api/socmed/following', auth, getFollowedUsers);
+router.delete("/api/socmed/post/:postId", auth, deletePost);
+
+router.get("/api/socmed/my-posts", auth, async (req, res) => {
+  try {
+    const userId = req.user.userId;
+
+    const myPosts = await postsm.find({ userId: userId });
+    res.json(myPosts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Ha ocurrido un error al obtener tus publicaciones" });
   }
 });
 
