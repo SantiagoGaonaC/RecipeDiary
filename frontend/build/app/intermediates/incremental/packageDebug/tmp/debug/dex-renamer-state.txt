@@ -1,4 +1,4 @@
-#Mon Apr 24 22:23:08 COT 2023
-base.0=C\:\\Users\\Axel\\Documents\\RecipeDiary\\Recipe%20Diary\\frontend\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Tue Apr 25 22:51:08 COT 2023
+base.0=C\:\\Users\\SANTIAGO ESPINAL\\Desktop\\Programacion\\Proyectos\\Moviles\\Recipe%20Diary\\frontend\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
